@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173f64"><title>Devedores • Gestão financeira</title><style>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2445"><title>Devedores • Gestão financeira</title><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0b1120}*{box-sizing:border-box}body{margin:0}.shell{max-width:1100px;margin:auto;padding:26px 18px 90px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{font-weight:850;font-size:25px;letter-spacing:-1px}.brand span{color:#8a9cff}.tag{font-size:12px;color:#9baac2;background:#182337;border:1px solid #293650;border-radius:30px;padding:8px 12px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 5px}p{color:#96a5be;margin:0}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}button{border:0;cursor:pointer;font:inherit;font-weight:700}button:active{transform:scale(.98)}.primary{background:#7989fa;color:#0a1125;padding:13px 18px;border-radius:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}.stat{border:1px solid #28344b;border-radius:20px;padding:22px;background:linear-gradient(145deg,#1b2940,#121c2e)}.stat small{color:#a5b3ca;font-size:13px}.stat strong{display:block;font-size:28px;margin-top:10px;letter-spacing:-1px}.stat em{font-size:12px;color:#93a5c3;font-style:normal}.stat:nth-child(1) strong{color:#ffb6a3}.stat:nth-child(2) strong{color:#a6e7c4}.sectiontop{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px}.sectiontop h2{margin:0;font-size:19px}.search{width:100%;background:#151f32;border:1px solid #2a3952;border-radius:13px;padding:14px 15px;color:white;outline:none;margin-bottom:16px}.search:focus,input:focus{border-color:#8394ff}.filters{display:flex;gap:8px;margin-bottom:17px}.filter{background:#172236;color:#aab8ce;padding:9px 15px;border-radius:10px}.filter.active{background:#7788f9;color:#0c1425}.clients{display:grid;gap:11px}.client{background:#151f31;border:1px solid #29364b;border-radius:17px;padding:17px;display:flex;align-items:center;gap:13px}.avatar{flex:none;width:47px;height:47px;display:grid;place-items:center;border-radius:14px;background:#303d68;color:#d7ddff;font-weight:800}.details{min-width:0;flex:1}.name{font-weight:750;font-size:15px}.meta{color:#93a2b9;font-size:12px;margin-top:5px}.amount{text-align:right}.amount strong{display:block;color:#ffc1b3;font-size:18px}.amount small{display:block;color:#96a5ba;font-size:11px;margin-top:4px}.actions{display:flex;gap:7px}.mini{background:#293853;color:#e3ebff;border-radius:10px;padding:10px 12px;font-size:12px}.mini.pay{background:#234b43;color:#a9f2d5}.empty{text-align:center;color:#94a4bc;padding:40px;border:1px dashed #34425a;border-radius:15px}.overlay{position:fixed;inset:0;background:#030713bb;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}.overlay.show{display:flex}.modal{width:min(100%,430px);background:#1b2639;border:1px solid #394660;border-radius:22px;padding:23px;box-shadow:0 20px 70px #0008}.modal h2{margin:0 0 17px}.field{display:block;font-size:13px;color:#b3c0d3;margin:13px 0 6px}.modal input{width:100%;padding:13px;border-radius:11px;background:#10192a;border:1px solid #36435a;color:#fff;font-size:16px;outline:none}.modalbuttons{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.secondary{padding:12px 16px;border-radius:11px;background:#344057;color:white}.hint{font-size:12px;margin-top:10px;color:#a4b4ca}.footer{text-align:center;color:#72829a;font-size:12px;margin-top:25px}@media(max-width:650px){.shell{padding:20px 14px 70px}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:16px}.stat strong{font-size:23px}.stat:last-child{grid-column:span 2}.heading h1{font-size:25px}.primary{padding:12px}.client{flex-wrap:wrap}.actions{width:100%;justify-content:flex-end}.amount strong{font-size:16px}}
 
 .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.toolbar select{background:#172236;color:#eaf0fa;border:1px solid #34425a;border-radius:11px;padding:11px;flex:1;min-width:170px}.client{align-items:flex-start}.client .avatar{object-fit:cover}.client .meta{line-height:1.65}.client .actions{flex-wrap:wrap;justify-content:flex-end}.overdue{color:#ffbf9d;font-weight:700}.notes{color:#b3c1d9;font-size:12px;margin-top:6px;white-space:pre-wrap}.modal{max-height:92vh;overflow-y:auto}.modal textarea,.modal input,.modal select{width:100%;padding:12px;border-radius:11px;background:#10192a;border:1px solid #36435a;color:white;font:inherit;outline:none}.modal textarea{resize:vertical;min-height:70px}.modal input[type=file]{font-size:12px}.chartcard{background:#151f31;border:1px solid #29364b;border-radius:20px;padding:20px;margin-bottom:30px}.charthead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.legend{font-size:12px;color:#b5c1d6}.legend b{color:#8a9cff}.legend em{color:#6cdec0;font-style:normal}.chartscroll{overflow-x:auto}.chart{height:215px;display:flex;align-items:end;gap:15px;padding:25px 5px 5px;min-width:450px}.month{flex:1;text-align:center;font-size:11px;color:#9cacc5}.bars{height:160px;display:flex;align-items:end;justify-content:center;gap:5px;border-bottom:1px solid #3b4961}.bar{width:21px;border-radius:5px 5px 0 0;min-height:2px}.bar.debt{background:#8a9cff}.bar.payment{background:#6cdec0}.historyitem{padding:13px 0;border-bottom:1px solid #34425a;display:flex;justify-content:space-between;gap:12px}.historyitem small{display:block;color:#9aabc5;margin-top:5px}.modal .summary{padding:12px;background:#111d30;border-radius:12px;margin-bottom:10px}.photoPreview{width:64px;height:64px;object-fit:cover;border-radius:14px;display:none;margin-top:9px}.emptychart{padding:40px 10px;text-align:center;color:#91a2ba}@media(max-width:650px){.client .details{flex-basis:calc(100% - 65px)}.client .amount{margin-left:60px;text-align:left}.client .actions{justify-content:flex-start}.toolbar select{width:100%}}
@@ -166,32 +166,31 @@ body{background:radial-gradient(ellipse at 20% -25%,#203747 0%,transparent 55%),
 @keyframes entryOut{to{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.entry-mark{display:none}}
 
-/* V16 — azul corporativo dessaturado, sem violeta */
-:root{color-scheme:dark!important;background:#0d2139!important;color:#f1f6fc!important}
-body{background:radial-gradient(ellipse 100% 55% at 50% -10%,#25527b 0%,#132d4c 48%,#0b2038 100%) fixed!important}
-.brand span{color:#65b8e1!important}
-.primary{background:linear-gradient(120deg,#357eae,#205b89)!important;border:1px solid #559ac3!important;color:#fff!important;box-shadow:none!important}
-.stat,.client.redesigned,.chartcard,.modal{background:linear-gradient(145deg,#224568,#163451 60%,#102b47)!important;border-color:#40698d!important;box-shadow:0 5px 20px #071a2b55!important}
-.stats{background:linear-gradient(145deg,#21496d,#112e4d)!important;border-color:#477da6!important}
-.stat:nth-child(1) strong,.stats .stat:nth-child(1) strong,.client-main .amount strong{color:#e5edf6!important;text-shadow:none!important}
-#received,.stats .stat:nth-child(2) strong{color:#83d2bd!important;text-shadow:none!important}
-.stat-debtors strong{color:#c1ddef!important;text-shadow:none!important}
-.secondary,.mini,.filter,.toolbar select,.periodbar select,.periodbar input,.search,.modal input,.modal textarea,.modal select{background:#1b3b5a!important;border-color:#406687!important;color:#e7f2fa!important;box-shadow:none!important}
-.filter.active{background:#356f9d!important;border-color:#6c9ec0!important;box-shadow:none!important;color:#fff!important}
-.client-tools .mini,.client-actions .mini{background:#27547c!important;border-color:#497da3!important;box-shadow:none!important;color:#f1f7ff!important}
-.client-actions .mini.pay{background:#1e5c62!important;border-color:#448d8d!important;color:#ddf9f3!important}
-.client-identity .avatar,.avatar-generic{background:#305d83!important;border-color:#5a86a9!important}
-.client-main .daycount,.daycount{background:#193c5b!important;border-color:#426d8e!important;color:#c9e5f4!important;box-shadow:none!important}
-.daycount strong,.daycount small{color:#c9e5f4!important}
-.client-description,.meta,.phone-inline{color:#bed1e2!important}
-.receipt-link,.chart-control .chart-toggle{color:#a8d9f2!important}
-.backup-section{background:linear-gradient(145deg,#234666,#19344f)!important;border-color:#527a99!important}
-.backup-section .secondary{background:#285477!important;border-color:#5785a5!important}
-.tag{background:#1d4162!important;border-color:#467596!important;color:#d2e5f4!important}
-.search:focus,.modal input:focus,.modal textarea:focus{border-color:#77b5da!important;box-shadow:0 0 0 3px #78b5da25!important}
-.share-debt{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#254d70!important;border:1px solid #5683a6!important;color:#dceffa!important;border-radius:11px;padding:8px 11px;font-size:12px;font-weight:700}
-.share-debt svg{width:16px;height:16px}
-.share-debt:disabled{opacity:.4;cursor:not-allowed}
+/* V17 — acabamento azul luminoso, sem tons violetas */
+:root{color-scheme:dark!important;background:#07152c!important;color:#f5faff!important}
+body{background:radial-gradient(ellipse 90% 45% at 10% 0%,#174e85 0%,transparent 75%),radial-gradient(ellipse 85% 45% at 100% 48%,#103e73 0%,transparent 80%),linear-gradient(155deg,#08172f,#0b2445 52%,#07162d)!important;background-attachment:fixed!important}
+.brand span{color:#65c8ff!important;text-shadow:0 0 15px #46baff55!important}
+.primary{background:linear-gradient(125deg,#339de1,#1669bd)!important;border:1px solid #74caff!important;color:white!important;box-shadow:0 6px 24px #087fd04d,inset 0 1px #ffffff35!important}
+.stats{background:linear-gradient(135deg,#21538b 0%,#153a69 55%,#10294d 100%)!important;border:1px solid #67b7fa!important;box-shadow:0 14px 36px #03102180,0 0 22px #3b9fff25,inset 0 1px #ffffff26!important}
+.stat,.client.redesigned,.chartcard,.modal{background:linear-gradient(145deg,#1d4674 0%,#14345d 58%,#102748 100%)!important;border:1px solid #4b91d1!important;box-shadow:0 9px 28px #03132677,0 0 16px #349cfa16,inset 0 1px #a8e1ff25!important}
+.stat:nth-child(1) strong,.stats .stat:nth-child(1) strong,.client-main .amount strong{color:#f5f9ff!important;text-shadow:0 2px 15px #72c7ff20!important}
+#received,.stats .stat:nth-child(2) strong{color:#49e0b7!important;text-shadow:0 0 12px #24d9a42b!important}
+.stat-debtors strong{color:#a8dbff!important}
+.secondary,.mini,.filter,.toolbar select,.periodbar select,.periodbar input,.search,.modal input,.modal textarea,.modal select{background:linear-gradient(145deg,#214c7b,#17365f)!important;border:1px solid #4a83b8!important;color:#eef8ff!important;box-shadow:inset 0 1px #ffffff16!important}
+.filter.active{background:linear-gradient(135deg,#3d9bd8,#2267b5)!important;border-color:#86cfff!important;box-shadow:0 0 16px #339cff35!important;color:white!important}
+.client-tools .mini,.client-actions .mini{background:linear-gradient(140deg,#2b689e,#1d4c7e)!important;border-color:#5a9ed1!important;color:#f5fbff!important;box-shadow:0 3px 12px #041e3a4a!important}
+.client-actions .mini.pay{background:linear-gradient(130deg,#127e82,#17676e)!important;border-color:#4cd0c0!important;color:#e6fffa!important}
+.client-identity .avatar,.avatar-generic{background:linear-gradient(145deg,#3977a9,#1c4a77)!important;border-color:#78b9e6!important}
+.client-main .daycount,.daycount{background:linear-gradient(145deg,#1c4c7b,#153558)!important;border-color:#5493c9!important;color:#ccecff!important}
+.daycount strong,.daycount small{color:#d2efff!important}
+.client-description,.meta,.phone-inline{color:#c2d9ee!important}
+.receipt-link,.chart-control .chart-toggle{color:#94d8ff!important}
+.backup-section{background:linear-gradient(145deg,#1c4776,#102b50)!important;border-color:#5399d1!important}
+.tag{background:#204c79!important;border-color:#4c95c9!important;color:#e2f4ff!important}
+.search:focus,.modal input:focus,.modal textarea:focus{border-color:#78ceff!important;box-shadow:0 0 0 3px #53b7ff35,0 0 15px #47baff22!important}
+.share-debt{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(130deg,#2e80bd,#1c568b)!important;border:1px solid #78c6fa!important;color:#fff!important;border-radius:12px;padding:8px 11px;font-size:12px;font-weight:700;box-shadow:0 4px 14px #03294a77,inset 0 1px #ffffff3b!important}
+.share-debt svg{width:16px;height:16px}.share-debt:disabled{opacity:.4;cursor:not-allowed}
+button:not(:disabled){transition:filter .18s ease,transform .18s ease,box-shadow .18s ease}button:not(:disabled):active{transform:scale(.97)}@media(hover:hover){button:not(:disabled):hover{filter:brightness(1.16)}}
 </style><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png"></head><body><div class="entry-mark" aria-hidden="true"><div class="entry-symbol"></div></div><main class="shell">
 <header class="top"><div class="brand">Devedores<span>.</span></div><div class="top-actions"><button class="secondary top-add" onclick="openStandalone()">+ Valor avulso</button><button class="primary top-add" onclick="openNew()">+ Cliente</button></div></header>
 <div class="chart-control"><button class="secondary chart-toggle" id="chartToggle" onclick="toggleChart()">▥ Ver movimentação mensal ▾</button></div>
@@ -299,54 +298,50 @@ async function importBackup(event){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});render();
 
-/* Comprovante de saldo V16 — gerado localmente, sem serviços externos */
+/* Resumo financeiro V17: desenho local, compartilhamento offline */
 async function shareDebt(id){
- const c=data.find(x=>x.id===id);
- if(!c)return;
- const due=balance(c);
- if(due<=0)return alert('Este cliente não possui dívida em aberto.');
- const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
- canvas.width=900;canvas.height=1100;
- const rounded=(x,y,w,h,r)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r)};
- const wrap=(value,x,y,maxWidth,lineHeight,maxLines=3)=>{
-   const words=String(value).split(/\s+/),lines=[];let line='';
-   for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}
-   if(line)lines.push(line);
-   lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
- };
- const bg=ctx.createLinearGradient(0,0,900,1100);bg.addColorStop(0,'#173f64');bg.addColorStop(1,'#0c223c');ctx.fillStyle=bg;ctx.fillRect(0,0,900,1100);
- ctx.fillStyle='#3579a8';rounded(60,60,780,980,38);ctx.fill();
- ctx.fillStyle='#14324f';rounded(66,66,768,968,33);ctx.fill();
- ctx.fillStyle='#72b5db';rounded(112,125,12,82,6);ctx.fill();
- ctx.textAlign='left';ctx.fillStyle='#f4f8fd';ctx.font='bold 54px system-ui, sans-serif';ctx.fillText('Devedores',148,183);
- ctx.font='28px system-ui, sans-serif';ctx.fillStyle='#b4d4e9';ctx.fillText('RESUMO DA DÍVIDA',112,270);
- ctx.strokeStyle='#426c8d';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(112,305);ctx.lineTo(785,305);ctx.stroke();
- ctx.font='26px system-ui, sans-serif';ctx.fillStyle='#accce1';ctx.fillText('CLIENTE',112,370);
- ctx.font='bold 42px system-ui, sans-serif';ctx.fillStyle='#fff';wrap(c.name,112,431,670,53,2);
- ctx.fillStyle='#204d72';rounded(112,525,676,242,26);ctx.fill();
- ctx.font='27px system-ui, sans-serif';ctx.fillStyle='#b6d9ed';ctx.fillText('SALDO EM ABERTO',150,593);
- ctx.font='bold 72px system-ui, sans-serif';ctx.fillStyle='#fff';
- let fs=72;while(fs>42&&ctx.measureText(money(due)).width>595){fs-=3;ctx.font='bold '+fs+'px system-ui, sans-serif'}
- ctx.fillText(money(due),150,695);
- ctx.font='25px system-ui, sans-serif';ctx.fillStyle='#bed5e6';ctx.fillText('Emitido em '+new Date().toLocaleDateString('pt-BR'),112,845);
- ctx.strokeStyle='#426c8d';ctx.beginPath();ctx.moveTo(112,900);ctx.lineTo(785,900);ctx.stroke();
- ctx.font='22px system-ui, sans-serif';ctx.fillStyle='#a8c4d8';ctx.fillText('Resumo informativo • confira os lançamentos',112,955);
+ const c=data.find(x=>x.id===id);if(!c)return;
+ const due=balance(c);if(due<=0)return alert('Este cliente não possui dívida em aberto.');
+ const history=c.history||[];
+ const payments=history.filter(h=>h.type==='Pagamento');
+ const paid=payments.reduce((sum,h)=>sum+(Number(h.value)||0),0);
+ // Total original líquido: saldo atual + pagamentos, inclusive após cancelamentos.
+ const original=Math.round((due+paid)*100)/100;
+ const latest=payments.slice().sort((a,b)=>parseDate(b.date)-parseDate(a.date))[0];
+ const canvas=document.createElement('canvas');canvas.width=900;canvas.height=1180;
+ const ctx=canvas.getContext('2d');
+ const rect=(x,y,w,h,r,fill,stroke)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}};
+ const text=(str,x,y,size,color='#fff',bold=false)=>{ctx.fillStyle=color;ctx.font=(bold?'700 ':'400 ')+size+'px system-ui, sans-serif';ctx.fillText(String(str),x,y)};
+ const fit=(str,x,y,max,size=48)=>{let f=size;do{ctx.font='700 '+f+'px system-ui, sans-serif';if(ctx.measureText(str).width<=max)break;f-=2}while(f>23);text(str,x,y,f,'#fff',true)};
+ const bg=ctx.createLinearGradient(0,0,900,1180);bg.addColorStop(0,'#1a5489');bg.addColorStop(.52,'#0d2c53');bg.addColorStop(1,'#071a34');ctx.fillStyle=bg;ctx.fillRect(0,0,900,1180);
+ const glow=ctx.createRadialGradient(760,160,20,760,160,560);glow.addColorStop(0,'#368edb66');glow.addColorStop(1,'#368edb00');ctx.fillStyle=glow;ctx.fillRect(0,0,900,1180);
+ const panel=ctx.createLinearGradient(65,80,835,1080);panel.addColorStop(0,'#215585');panel.addColorStop(1,'#102a4c');rect(55,58,790,1060,36,panel,'#70bdf5');
+ rect(100,112,10,60,5,'#75caff');text('RESUMO FINANCEIRO',132,157,34,'#e5f5ff',true);
+ ctx.strokeStyle='#4b8cbd';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(105,200);ctx.lineTo(790,200);ctx.stroke();
+ text('CLIENTE',105,260,24,'#b8d9ef');fit(c.name,105,325,675,49);
+ const saldo=ctx.createLinearGradient(105,380,790,580);saldo.addColorStop(0,'#2875ad');saldo.addColorStop(1,'#1a4b7c');rect(100,377,690,203,25,saldo,'#65b6ee');
+ text('SALDO EM ABERTO',134,438,25,'#c5e5fa');fit(money(due),134,529,620,70);
+ rect(100,613,333,144,20,'#153b65','#4488bd');rect(457,613,333,144,20,'#153b65','#4488bd');
+ text('VALOR ORIGINAL',124,658,22,'#bbdcf3');fit(money(original),124,717,288,38);
+ text('TOTAL JÁ PAGO',481,658,22,'#bbdcf3');fit(money(paid),481,717,288,38);
+ rect(100,788,690,165,20,'#153b65','#4488bd');
+ text('ÚLTIMO ABATIMENTO',125,835,24,'#bbdcf3');
+ if(latest){fit(money(latest.value),125,896,390,42);text('Em '+fmt(latest.date),520,894,26,'#b9def6')}
+ else{text('Nenhum pagamento registrado',125,896,30,'#fff',true)}
+ ctx.beginPath();ctx.moveTo(105,994);ctx.lineTo(790,994);ctx.strokeStyle='#4b8cbd';ctx.stroke();
+ text('Atualizado em '+new Date().toLocaleDateString('pt-BR'),105,1041,24,'#c1d9ec');
+ text('Resumo informativo • confira os lançamentos',105,1081,20,'#9dc2df');
  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
  if(!blob)return alert('Não foi possível gerar a imagem.');
- const filename='divida-'+String(c.name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').slice(0,45)+'.png';
+ const filename='resumo-'+String(c.name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').slice(0,45)+'.png';
  const file=new File([blob],filename,{type:'image/png'});
- const message='Olá, '+c.name+'! Segue o resumo atualizado da sua dívida: '+money(due)+'.';
- try{
-   if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-     await navigator.share({files:[file],title:'Resumo da dívida — Devedores',text:message});
-     return;
-   }
- }catch(e){if(e.name==='AbortError')return;console.warn('Compartilhamento indisponível:',e)}
+ const message='Olá, '+c.name+'! Segue seu resumo financeiro atualizado. Saldo em aberto: '+money(due)+'. Total já pago: '+money(paid)+'.';
+ try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Resumo financeiro',text:message});return}}
+ catch(e){if(e.name==='AbortError')return;console.warn('Compartilhamento indisponível:',e)}
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
  if(confirm('A imagem foi baixada. Deseja abrir o WhatsApp com uma mensagem pronta? Anexe a imagem baixada na conversa.')){
-   const digits=String(c.phone||'').replace(/\D/g,'');
-   const number=digits?(digits.length===10||digits.length===11?'55'+digits:digits):'';
-   window.open('https://wa.me/'+number+'?text='+encodeURIComponent(message),'_blank','noopener');
+ const digits=String(c.phone||'').replace(/\D/g,'');const number=digits?(digits.length===10||digits.length===11?'55'+digits:digits):'';
+ window.open('https://wa.me/'+number+'?text='+encodeURIComponent(message),'_blank','noopener');
  }
 }
 </script></body></html>
