@@ -285,6 +285,14 @@ body{background:linear-gradient(180deg,#102d4a 0%,var(--page) 65%) fixed!importa
 .backup-section .secondary{background:#364452!important;border-color:#758594!important}
 @media(max-width:390px){.client.redesigned{padding:12px!important}.client-tools .mini,.client-tools .share-debt{width:36px!important;height:36px!important;min-width:36px!important;padding:8px!important}.client-main .amount strong{font-size:23px!important}.client-title .name{font-size:16px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* V20: hierarquia contemporânea, sem sombra preta nos números */
+.stats{background:linear-gradient(120deg,#245c8b 0%,#1c4d79 46%,#143b65 100%)!important;border:1px solid #4c8fbb!important}
+.stats .stat:nth-child(1) #total{color:#ff5969!important;text-shadow:none!important;font-weight:850!important;letter-spacing:-.7px!important;-webkit-text-stroke:.25px rgba(255,255,255,.13)}
+.client-main .amount strong{color:#f5f9ff!important;text-shadow:none!important}
+#received,.stats .stat:nth-child(2) strong{text-shadow:none!important}
+.client.redesigned{background:linear-gradient(135deg,#245b89 0%,#1b4a75 54%,#143b61 100%)!important}
+.backup-section{background:linear-gradient(135deg,#343e48,#202a34)!important}
 </style><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png"></head><body><div class="entry-mark" aria-hidden="true"><div class="entry-symbol"></div></div><main class="shell">
 <header class="top"><div class="brand">Devedores<span>.</span></div><div class="top-actions"><button class="secondary top-add" onclick="openStandalone()">+ Valor avulso</button><button class="primary top-add" onclick="openNew()">+ Cliente</button></div></header>
 <div class="chart-control"><button class="secondary chart-toggle" id="chartToggle" onclick="toggleChart()">▥ Ver movimentação mensal ▾</button></div>
@@ -401,53 +409,75 @@ async function shareDebt(id){
  const due=balance(c);
  if(due<=0)return alert('Este cliente não possui dívida em aberto.');
  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
- canvas.width=900;canvas.height=1200;
- const rounded=(x,y,w,h,r)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r)};
- const wrap=(value,x,y,maxWidth,lineHeight,maxLines=3)=>{
-   const words=String(value).split(/\s+/),lines=[];let line='';
-   for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}
-   if(line)lines.push(line);
-   lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
+ canvas.width=960;canvas.height=1260;
+ const round=(x,y,w,h,r)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r)};
+ const fillRound=(x,y,w,h,r,color)=>{ctx.fillStyle=color;round(x,y,w,h,r);ctx.fill()};
+ const fit=(text,max,fontStart=65,min=28)=>{
+   let size=fontStart;
+   do{ctx.font=`800 ${size}px system-ui, sans-serif`;if(ctx.measureText(text).width<=max)break;size-=2}while(size>min);
+   return size;
  };
- const bg=ctx.createLinearGradient(0,0,900,1100);bg.addColorStop(0,'#173f64');bg.addColorStop(1,'#0c223c');ctx.fillStyle=bg;ctx.fillRect(0,0,900,1100);
- ctx.fillStyle='#3579a8';rounded(60,60,780,1080,38);ctx.fill();
- ctx.fillStyle='#14324f';rounded(66,66,768,1068,33);ctx.fill();
- ctx.fillStyle='#72b5db';rounded(112,125,12,82,6);ctx.fill();
- ctx.textAlign='left';ctx.fillStyle='#f4f8fd';ctx.font='bold 54px system-ui, sans-serif';ctx.fillText('Devedores',148,183);
- ctx.font='28px system-ui, sans-serif';ctx.fillStyle='#b4d4e9';ctx.fillText('RESUMO DA DÍVIDA',112,270);
- ctx.strokeStyle='#426c8d';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(112,305);ctx.lineTo(785,305);ctx.stroke();
- ctx.font='26px system-ui, sans-serif';ctx.fillStyle='#accce1';ctx.fillText('CLIENTE',112,370);
- ctx.font='bold 42px system-ui, sans-serif';ctx.fillStyle='#fff';wrap(c.name,112,431,670,53,2);
- ctx.fillStyle='#204d72';rounded(112,525,676,242,26);ctx.fill();
- ctx.font='27px system-ui, sans-serif';ctx.fillStyle='#b6d9ed';ctx.fillText('SALDO EM ABERTO',150,593);
- ctx.font='bold 72px system-ui, sans-serif';ctx.fillStyle='#fff';
- let fs=72;while(fs>42&&ctx.measureText(money(due)).width>595){fs-=3;ctx.font='bold '+fs+'px system-ui, sans-serif'}
- ctx.fillText(money(due),150,695);
- const latest=[...(c.history||[])].sort((a,b)=>parseDate(b.date)-parseDate(a.date)).slice(0,2);
- ctx.fillStyle='#dceefa';ctx.font='bold 27px system-ui, sans-serif';ctx.fillText('ÚLTIMAS MOVIMENTAÇÕES',112,825);
- if(!latest.length){ctx.font='24px system-ui, sans-serif';ctx.fillStyle='#b4cadb';ctx.fillText('Nenhuma movimentação registrada',112,885);}
- latest.forEach((h,i)=>{
-   const y=868+i*104;
-   ctx.fillStyle='#b4cadb';ctx.font='23px system-ui, sans-serif';
-   const label=String(h.type||'Movimentação')+'  •  '+fmt(h.date);
-   ctx.fillText(label.slice(0,49),112,y);
-   ctx.fillStyle=h.type==='Pagamento'?'#88dcc0':'#f0f6fc';
-   ctx.font='bold 27px system-ui, sans-serif';
-   const val=(h.type==='Pagamento'||h.type==='Dívida cancelada'?'− ':'+ ')+money(h.value||0);
-   ctx.textAlign='right';ctx.fillText(val,786,y);ctx.textAlign='left';
-   if(h.description){ctx.font='21px system-ui, sans-serif';ctx.fillStyle='#9ebbd0';wrap(String(h.description).slice(0,65),112,y+32,660,27,1);}
- });
- ctx.font='23px system-ui, sans-serif';ctx.fillStyle='#bed5e6';ctx.fillText('Emitido em '+new Date().toLocaleDateString('pt-BR'),112,1090);
- ctx.strokeStyle='#426c8d';ctx.beginPath();ctx.moveTo(112,1040);ctx.lineTo(785,1040);ctx.stroke();
+ const dateLabel=(date)=>{try{return fmt(date)||'Sem data'}catch(e){return String(date||'Sem data')}};
+ const movements=[...(Array.isArray(c.history)?c.history:[])].map((h,i)=>({...h,_i:i})).sort((a,b)=>{
+   const da=parseDate(a.date),db=parseDate(b.date);
+   const ta=da instanceof Date?da.getTime():Number(da),tb=db instanceof Date?db.getTime():Number(db);
+   return (Number.isFinite(tb)?tb:0)-(Number.isFinite(ta)?ta:0)||b._i-a._i;
+ }).slice(0,2);
+ // All drawing happens BEFORE canvas.toBlob, including the two most recent movements.
+ const bg=ctx.createLinearGradient(0,0,960,1260);
+ bg.addColorStop(0,'#17649d');bg.addColorStop(.43,'#114677');bg.addColorStop(1,'#082642');
+ ctx.fillStyle=bg;ctx.fillRect(0,0,960,1260);
+ const panel=ctx.createLinearGradient(45,60,920,1200);
+ panel.addColorStop(0,'#15548a');panel.addColorStop(.5,'#0c3b69');panel.addColorStop(1,'#092b50');
+ fillRound(38,42,884,1170,36,panel);
+ ctx.strokeStyle='#398cbd';ctx.lineWidth=2;round(38,42,884,1170,36);ctx.stroke();
+ fillRound(82,105,9,76,5,'#58c2ef');
+ ctx.textAlign='left';ctx.fillStyle='#f3f9ff';ctx.font='800 58px system-ui, sans-serif';ctx.fillText('Devedores',116,164);
+ ctx.font='28px system-ui, sans-serif';ctx.fillStyle='#b8d7ed';ctx.fillText('RESUMO DA DÍVIDA',83,246);
+ ctx.strokeStyle='#3978a5';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(83,278);ctx.lineTo(878,278);ctx.stroke();
+ ctx.font='25px system-ui, sans-serif';ctx.fillStyle='#b2d1e7';ctx.fillText('CLIENTE',83,340);
+ const name=String(c.name||'Cliente');fit(name,770,44,26);ctx.fillStyle='#ffffff';ctx.fillText(name.slice(0,65),83,400);
+ // The value's background is BLUE with a subtle blue-on-blue gradient, not red.
+ const valueBg=ctx.createLinearGradient(83,480,877,745);
+ valueBg.addColorStop(0,'#143b66');valueBg.addColorStop(.55,'#1c5383');valueBg.addColorStop(1,'#102f57');
+ fillRound(83,472,794,266,26,valueBg);
+ ctx.strokeStyle='#4b93c4';ctx.lineWidth=2;round(83,472,794,266,26);ctx.stroke();
+ fillRound(111,504,8,45,4,'#fa5968');
+ ctx.font='bold 27px system-ui, sans-serif';ctx.fillStyle='#d5e7f4';ctx.fillText('SALDO EM ABERTO',140,542);
+ const amount=money(due);
+ fit(amount,700,83,42);ctx.fillStyle='#ff5b6a';ctx.fillText(amount,126,663);
+ ctx.fillStyle='#eaf5ff';ctx.font='bold 29px system-ui, sans-serif';ctx.fillText('Últimas movimentações',83,813);
+ // Always show the two most recent entries when they exist, irrespective of type.
+ if(!movements.length){
+   fillRound(83,846,794,174,18,'#143d65');
+   ctx.fillStyle='#bbd6e9';ctx.font='25px system-ui, sans-serif';ctx.fillText('Nenhuma movimentação registrada',113,923);
+ }else{
+   fillRound(83,846,794,210,18,'#143d65');
+   movements.forEach((h,i)=>{
+     const y=892+i*93;
+     const type=String(h.type||'Movimentação');
+     const negative=type==='Pagamento'||type==='Dívida cancelada';
+     ctx.font='bold 25px system-ui, sans-serif';ctx.fillStyle='#f2f7fc';
+     ctx.fillText(type.slice(0,22),110,y);
+     ctx.font='23px system-ui, sans-serif';ctx.fillStyle='#afcfe4';ctx.fillText(dateLabel(h.date),110,y+30);
+     const value=(negative?'− ':'+ ')+money(Number(h.value)||0);
+     let size=27;ctx.font=`bold ${size}px system-ui, sans-serif`;
+     while(size>20&&ctx.measureText(value).width>335){size-=1;ctx.font=`bold ${size}px system-ui, sans-serif`}
+     ctx.textAlign='right';ctx.fillStyle=negative?'#86e1bd':'#ff9a9f';ctx.fillText(value,848,y+12);ctx.textAlign='left';
+     if(i===0&&movements.length===2){ctx.strokeStyle='#3b6c91';ctx.beginPath();ctx.moveTo(110,951);ctx.lineTo(849,951);ctx.stroke()}
+   });
+ }
+ ctx.font='23px system-ui, sans-serif';ctx.fillStyle='#b9d4e7';
+ ctx.fillText('Emitido em '+new Date().toLocaleDateString('pt-BR'),83,1136);
+ ctx.font='19px system-ui, sans-serif';ctx.fillStyle='#9fc4dc';ctx.fillText('Resumo com até 2 movimentações recentes',83,1172);
  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
  if(!blob)return alert('Não foi possível gerar a imagem.');
- const filename='divida-'+String(c.name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').slice(0,45)+'.png';
+ const filename='divida-'+name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').slice(0,45)+'.png';
  const file=new File([blob],filename,{type:'image/png'});
- const message='Olá, '+c.name+'! Segue o resumo atualizado da sua dívida: '+money(due)+'.';
+ const message='Olá, '+name+'! Segue o resumo atualizado da sua dívida: '+money(due)+'.';
  try{
    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-     await navigator.share({files:[file],title:'Resumo da dívida — Devedores',text:message});
-     return;
+     await navigator.share({files:[file],title:'Resumo da dívida — Devedores',text:message});return;
    }
  }catch(e){if(e.name==='AbortError')return;console.warn('Compartilhamento indisponível:',e)}
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
