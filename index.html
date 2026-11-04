@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101827"><title>Devedores • Gestão financeira</title><style>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173f64"><title>Devedores • Gestão financeira</title><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0b1120}*{box-sizing:border-box}body{margin:0}.shell{max-width:1100px;margin:auto;padding:26px 18px 90px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{font-weight:850;font-size:25px;letter-spacing:-1px}.brand span{color:#8a9cff}.tag{font-size:12px;color:#9baac2;background:#182337;border:1px solid #293650;border-radius:30px;padding:8px 12px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 5px}p{color:#96a5be;margin:0}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}button{border:0;cursor:pointer;font:inherit;font-weight:700}button:active{transform:scale(.98)}.primary{background:#7989fa;color:#0a1125;padding:13px 18px;border-radius:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}.stat{border:1px solid #28344b;border-radius:20px;padding:22px;background:linear-gradient(145deg,#1b2940,#121c2e)}.stat small{color:#a5b3ca;font-size:13px}.stat strong{display:block;font-size:28px;margin-top:10px;letter-spacing:-1px}.stat em{font-size:12px;color:#93a5c3;font-style:normal}.stat:nth-child(1) strong{color:#ffb6a3}.stat:nth-child(2) strong{color:#a6e7c4}.sectiontop{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px}.sectiontop h2{margin:0;font-size:19px}.search{width:100%;background:#151f32;border:1px solid #2a3952;border-radius:13px;padding:14px 15px;color:white;outline:none;margin-bottom:16px}.search:focus,input:focus{border-color:#8394ff}.filters{display:flex;gap:8px;margin-bottom:17px}.filter{background:#172236;color:#aab8ce;padding:9px 15px;border-radius:10px}.filter.active{background:#7788f9;color:#0c1425}.clients{display:grid;gap:11px}.client{background:#151f31;border:1px solid #29364b;border-radius:17px;padding:17px;display:flex;align-items:center;gap:13px}.avatar{flex:none;width:47px;height:47px;display:grid;place-items:center;border-radius:14px;background:#303d68;color:#d7ddff;font-weight:800}.details{min-width:0;flex:1}.name{font-weight:750;font-size:15px}.meta{color:#93a2b9;font-size:12px;margin-top:5px}.amount{text-align:right}.amount strong{display:block;color:#ffc1b3;font-size:18px}.amount small{display:block;color:#96a5ba;font-size:11px;margin-top:4px}.actions{display:flex;gap:7px}.mini{background:#293853;color:#e3ebff;border-radius:10px;padding:10px 12px;font-size:12px}.mini.pay{background:#234b43;color:#a9f2d5}.empty{text-align:center;color:#94a4bc;padding:40px;border:1px dashed #34425a;border-radius:15px}.overlay{position:fixed;inset:0;background:#030713bb;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}.overlay.show{display:flex}.modal{width:min(100%,430px);background:#1b2639;border:1px solid #394660;border-radius:22px;padding:23px;box-shadow:0 20px 70px #0008}.modal h2{margin:0 0 17px}.field{display:block;font-size:13px;color:#b3c0d3;margin:13px 0 6px}.modal input{width:100%;padding:13px;border-radius:11px;background:#10192a;border:1px solid #36435a;color:#fff;font-size:16px;outline:none}.modalbuttons{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.secondary{padding:12px 16px;border-radius:11px;background:#344057;color:white}.hint{font-size:12px;margin-top:10px;color:#a4b4ca}.footer{text-align:center;color:#72829a;font-size:12px;margin-top:25px}@media(max-width:650px){.shell{padding:20px 14px 70px}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:16px}.stat strong{font-size:23px}.stat:last-child{grid-column:span 2}.heading h1{font-size:25px}.primary{padding:12px}.client{flex-wrap:wrap}.actions{width:100%;justify-content:flex-end}.amount strong{font-size:16px}}
 
 .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.toolbar select{background:#172236;color:#eaf0fa;border:1px solid #34425a;border-radius:11px;padding:11px;flex:1;min-width:170px}.client{align-items:flex-start}.client .avatar{object-fit:cover}.client .meta{line-height:1.65}.client .actions{flex-wrap:wrap;justify-content:flex-end}.overdue{color:#ffbf9d;font-weight:700}.notes{color:#b3c1d9;font-size:12px;margin-top:6px;white-space:pre-wrap}.modal{max-height:92vh;overflow-y:auto}.modal textarea,.modal input,.modal select{width:100%;padding:12px;border-radius:11px;background:#10192a;border:1px solid #36435a;color:white;font:inherit;outline:none}.modal textarea{resize:vertical;min-height:70px}.modal input[type=file]{font-size:12px}.chartcard{background:#151f31;border:1px solid #29364b;border-radius:20px;padding:20px;margin-bottom:30px}.charthead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.legend{font-size:12px;color:#b5c1d6}.legend b{color:#8a9cff}.legend em{color:#6cdec0;font-style:normal}.chartscroll{overflow-x:auto}.chart{height:215px;display:flex;align-items:end;gap:15px;padding:25px 5px 5px;min-width:450px}.month{flex:1;text-align:center;font-size:11px;color:#9cacc5}.bars{height:160px;display:flex;align-items:end;justify-content:center;gap:5px;border-bottom:1px solid #3b4961}.bar{width:21px;border-radius:5px 5px 0 0;min-height:2px}.bar.debt{background:#8a9cff}.bar.payment{background:#6cdec0}.historyitem{padding:13px 0;border-bottom:1px solid #34425a;display:flex;justify-content:space-between;gap:12px}.historyitem small{display:block;color:#9aabc5;margin-top:5px}.modal .summary{padding:12px;background:#111d30;border-radius:12px;margin-bottom:10px}.photoPreview{width:64px;height:64px;object-fit:cover;border-radius:14px;display:none;margin-top:9px}.emptychart{padding:40px 10px;text-align:center;color:#91a2ba}@media(max-width:650px){.client .details{flex-basis:calc(100% - 65px)}.client .amount{margin-left:60px;text-align:left}.client .actions{justify-content:flex-start}.toolbar select{width:100%}}
@@ -165,7 +165,34 @@ body{background:radial-gradient(ellipse at 20% -25%,#203747 0%,transparent 55%),
 @keyframes entryTurn{from{opacity:0;transform:translateY(12px) rotate(-45deg) scale(.82)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
 @keyframes entryOut{to{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.entry-mark{display:none}}
-</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#0d151d"><link rel="icon" type="image/png" href="./icons/icon-192.png"></head><body><div class="entry-mark" aria-hidden="true"><div class="entry-symbol"></div></div><main class="shell">
+
+/* V16 — azul corporativo dessaturado, sem violeta */
+:root{color-scheme:dark!important;background:#0d2139!important;color:#f1f6fc!important}
+body{background:radial-gradient(ellipse 100% 55% at 50% -10%,#25527b 0%,#132d4c 48%,#0b2038 100%) fixed!important}
+.brand span{color:#65b8e1!important}
+.primary{background:linear-gradient(120deg,#357eae,#205b89)!important;border:1px solid #559ac3!important;color:#fff!important;box-shadow:none!important}
+.stat,.client.redesigned,.chartcard,.modal{background:linear-gradient(145deg,#224568,#163451 60%,#102b47)!important;border-color:#40698d!important;box-shadow:0 5px 20px #071a2b55!important}
+.stats{background:linear-gradient(145deg,#21496d,#112e4d)!important;border-color:#477da6!important}
+.stat:nth-child(1) strong,.stats .stat:nth-child(1) strong,.client-main .amount strong{color:#e5edf6!important;text-shadow:none!important}
+#received,.stats .stat:nth-child(2) strong{color:#83d2bd!important;text-shadow:none!important}
+.stat-debtors strong{color:#c1ddef!important;text-shadow:none!important}
+.secondary,.mini,.filter,.toolbar select,.periodbar select,.periodbar input,.search,.modal input,.modal textarea,.modal select{background:#1b3b5a!important;border-color:#406687!important;color:#e7f2fa!important;box-shadow:none!important}
+.filter.active{background:#356f9d!important;border-color:#6c9ec0!important;box-shadow:none!important;color:#fff!important}
+.client-tools .mini,.client-actions .mini{background:#27547c!important;border-color:#497da3!important;box-shadow:none!important;color:#f1f7ff!important}
+.client-actions .mini.pay{background:#1e5c62!important;border-color:#448d8d!important;color:#ddf9f3!important}
+.client-identity .avatar,.avatar-generic{background:#305d83!important;border-color:#5a86a9!important}
+.client-main .daycount,.daycount{background:#193c5b!important;border-color:#426d8e!important;color:#c9e5f4!important;box-shadow:none!important}
+.daycount strong,.daycount small{color:#c9e5f4!important}
+.client-description,.meta,.phone-inline{color:#bed1e2!important}
+.receipt-link,.chart-control .chart-toggle{color:#a8d9f2!important}
+.backup-section{background:linear-gradient(145deg,#234666,#19344f)!important;border-color:#527a99!important}
+.backup-section .secondary{background:#285477!important;border-color:#5785a5!important}
+.tag{background:#1d4162!important;border-color:#467596!important;color:#d2e5f4!important}
+.search:focus,.modal input:focus,.modal textarea:focus{border-color:#77b5da!important;box-shadow:0 0 0 3px #78b5da25!important}
+.share-debt{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#254d70!important;border:1px solid #5683a6!important;color:#dceffa!important;border-radius:11px;padding:8px 11px;font-size:12px;font-weight:700}
+.share-debt svg{width:16px;height:16px}
+.share-debt:disabled{opacity:.4;cursor:not-allowed}
+</style><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png"></head><body><div class="entry-mark" aria-hidden="true"><div class="entry-symbol"></div></div><main class="shell">
 <header class="top"><div class="brand">Devedores<span>.</span></div><div class="top-actions"><button class="secondary top-add" onclick="openStandalone()">+ Valor avulso</button><button class="primary top-add" onclick="openNew()">+ Cliente</button></div></header>
 <div class="chart-control"><button class="secondary chart-toggle" id="chartToggle" onclick="toggleChart()">▥ Ver movimentação mensal ▾</button></div>
 <section class="stats"><div class="stat"><small>Total a receber</small><strong id="total">R$ 0,00</strong><em>Em aberto</em></div><div class="stat"><small>Total recebido</small><strong id="received">R$ 0,00</strong><button class="receipt-link" onclick="openReceipts()">↗ Ver recebimentos</button><em id="receivedCaption">Pagamentos registrados</em></div><div class="stat stat-debtors"><small>Clientes devedores</small><strong id="count">0</strong><em>Com saldo pendente</em></div></section>
@@ -212,7 +239,7 @@ const q=$('search').value.toLocaleLowerCase('pt-BR').trim();
 let shown=data.filter(c=>(String(c.name).toLowerCase().includes(q)||String(c.phone||'').includes(q))&&(filter==='all'||(filter==='pending'?balance(c)>0:balance(c)===0)));
 const sort=$('sort').value;
 shown.sort((a,b)=>sort==='alpha'?a.name.localeCompare(b.name,'pt-BR'):sort==='largest'?balance(b)-balance(a):sort==='oldest'?(debtStart(a)?parseDate(debtStart(a)).getTime():Infinity)-(debtStart(b)?parseDate(debtStart(b)).getTime():Infinity):String(b.createdAt||b.history?.[0]?.date||'').localeCompare(String(a.createdAt||a.history?.[0]?.date||'')));
-$('clients').innerHTML=shown.length?shown.map(c=>{const start=debtStart(c),phone=c.phone?`<span class="phone-inline"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.2 10a16 16 0 0 0 6.8 6.8l1.6-1.8a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg>${esc(phoneMask(c.phone))}</span>`:'',photo=c.photo?`<img class="avatar" src="${c.photo}" alt="Foto de ${esc(c.name)}">`:`<div class="avatar avatar-generic" aria-label="Sem foto"><svg viewBox="0 0 48 48" width="31" height="31" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"><circle cx="24" cy="17" r="8"/><path d="M8 41c1-10 7-15 16-15s15 5 16 15"/></svg></div>`;return `<article class="client redesigned"><div class="client-head"><div class="client-identity">${photo}<div class="client-title"><div class="name">${esc(c.name)}</div>${c.notes?`<div class="client-description">${esc(c.notes)}</div>`:''}</div></div><div class="client-tools"><button class="mini" onclick="openEdit('${c.id}')">Editar</button><button class="mini" onclick="historyView('${c.id}')">Histórico</button></div></div><div class="client-main"><div class="daycount"><strong>${start?days(start):"✓"}</strong><small>${start?"dias devendo":"quitado"}</small></div><div class="details"><div class="meta">${phone}${phone?'<br>':''}${balance(c)===0?'✓ Dívida quitada · ':''}${(c.history||[]).length} movimentações</div></div><div class="amount"><small>Saldo devedor</small><strong style="${balance(c)===0?'color:#a6e7c4':''}">${money(balance(c))}</strong></div></div><div class="client-actions"><button class="mini pay" onclick="openAction('${c.id}','pay')" ${balance(c)<=0?'disabled':''}>− Abater</button><button class="mini" onclick="openAction('${c.id}','add')">+ Dívida</button></div></article>`}).join(''):'<div class="empty">Nenhum cliente encontrado.<br>Adicione um cliente para começar.</div>';
+$('clients').innerHTML=shown.length?shown.map(c=>{const start=debtStart(c),phone=c.phone?`<span class="phone-inline"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.2 10a16 16 0 0 0 6.8 6.8l1.6-1.8a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg>${esc(phoneMask(c.phone))}</span>`:'',photo=c.photo?`<img class="avatar" src="${c.photo}" alt="Foto de ${esc(c.name)}">`:`<div class="avatar avatar-generic" aria-label="Sem foto"><svg viewBox="0 0 48 48" width="31" height="31" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"><circle cx="24" cy="17" r="8"/><path d="M8 41c1-10 7-15 16-15s15 5 16 15"/></svg></div>`;return `<article class="client redesigned"><div class="client-head"><div class="client-identity">${photo}<div class="client-title"><div class="name">${esc(c.name)}</div>${c.notes?`<div class="client-description">${esc(c.notes)}</div>`:''}</div></div><div class="client-tools"><button class="mini" onclick="openEdit('${c.id}')">Editar</button><button class="mini" onclick="historyView('${c.id}')">Histórico</button><button class="share-debt" aria-label="Compartilhar imagem da dívida de ${esc(c.name)}" title="Compartilhar dívida por WhatsApp" onclick="shareDebt('${c.id}')" ${balance(c)<=0?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.2m-6.6 8 6.6 3.8"/></svg>Compartilhar</button></div></div><div class="client-main"><div class="daycount"><strong>${start?days(start):"✓"}</strong><small>${start?"dias devendo":"quitado"}</small></div><div class="details"><div class="meta">${phone}${phone?'<br>':''}${balance(c)===0?'✓ Dívida quitada · ':''}${(c.history||[]).length} movimentações</div></div><div class="amount"><small>Saldo devedor</small><strong style="${balance(c)===0?'color:#a6e7c4':''}">${money(balance(c))}</strong></div></div><div class="client-actions"><button class="mini pay" onclick="openAction('${c.id}','pay')" ${balance(c)<=0?'disabled':''}>− Abater</button><button class="mini" onclick="openAction('${c.id}','add')">+ Dívida</button></div></article>`}).join(''):'<div class="empty">Nenhum cliente encontrado.<br>Adicione um cliente para começar.</div>';
 renderChart();
 }
 function renderChart(){
@@ -271,4 +298,55 @@ async function importBackup(event){
  }catch(err){alert('Não foi possível importar: '+err.message)}
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});render();
+
+/* Comprovante de saldo V16 — gerado localmente, sem serviços externos */
+async function shareDebt(id){
+ const c=data.find(x=>x.id===id);
+ if(!c)return;
+ const due=balance(c);
+ if(due<=0)return alert('Este cliente não possui dívida em aberto.');
+ const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+ canvas.width=900;canvas.height=1100;
+ const rounded=(x,y,w,h,r)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r)};
+ const wrap=(value,x,y,maxWidth,lineHeight,maxLines=3)=>{
+   const words=String(value).split(/\s+/),lines=[];let line='';
+   for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}
+   if(line)lines.push(line);
+   lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
+ };
+ const bg=ctx.createLinearGradient(0,0,900,1100);bg.addColorStop(0,'#173f64');bg.addColorStop(1,'#0c223c');ctx.fillStyle=bg;ctx.fillRect(0,0,900,1100);
+ ctx.fillStyle='#3579a8';rounded(60,60,780,980,38);ctx.fill();
+ ctx.fillStyle='#14324f';rounded(66,66,768,968,33);ctx.fill();
+ ctx.fillStyle='#72b5db';rounded(112,125,12,82,6);ctx.fill();
+ ctx.textAlign='left';ctx.fillStyle='#f4f8fd';ctx.font='bold 54px system-ui, sans-serif';ctx.fillText('Devedores',148,183);
+ ctx.font='28px system-ui, sans-serif';ctx.fillStyle='#b4d4e9';ctx.fillText('RESUMO DA DÍVIDA',112,270);
+ ctx.strokeStyle='#426c8d';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(112,305);ctx.lineTo(785,305);ctx.stroke();
+ ctx.font='26px system-ui, sans-serif';ctx.fillStyle='#accce1';ctx.fillText('CLIENTE',112,370);
+ ctx.font='bold 42px system-ui, sans-serif';ctx.fillStyle='#fff';wrap(c.name,112,431,670,53,2);
+ ctx.fillStyle='#204d72';rounded(112,525,676,242,26);ctx.fill();
+ ctx.font='27px system-ui, sans-serif';ctx.fillStyle='#b6d9ed';ctx.fillText('SALDO EM ABERTO',150,593);
+ ctx.font='bold 72px system-ui, sans-serif';ctx.fillStyle='#fff';
+ let fs=72;while(fs>42&&ctx.measureText(money(due)).width>595){fs-=3;ctx.font='bold '+fs+'px system-ui, sans-serif'}
+ ctx.fillText(money(due),150,695);
+ ctx.font='25px system-ui, sans-serif';ctx.fillStyle='#bed5e6';ctx.fillText('Emitido em '+new Date().toLocaleDateString('pt-BR'),112,845);
+ ctx.strokeStyle='#426c8d';ctx.beginPath();ctx.moveTo(112,900);ctx.lineTo(785,900);ctx.stroke();
+ ctx.font='22px system-ui, sans-serif';ctx.fillStyle='#a8c4d8';ctx.fillText('Resumo informativo • confira os lançamentos',112,955);
+ const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+ if(!blob)return alert('Não foi possível gerar a imagem.');
+ const filename='divida-'+String(c.name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').slice(0,45)+'.png';
+ const file=new File([blob],filename,{type:'image/png'});
+ const message='Olá, '+c.name+'! Segue o resumo atualizado da sua dívida: '+money(due)+'.';
+ try{
+   if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+     await navigator.share({files:[file],title:'Resumo da dívida — Devedores',text:message});
+     return;
+   }
+ }catch(e){if(e.name==='AbortError')return;console.warn('Compartilhamento indisponível:',e)}
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+ if(confirm('A imagem foi baixada. Deseja abrir o WhatsApp com uma mensagem pronta? Anexe a imagem baixada na conversa.')){
+   const digits=String(c.phone||'').replace(/\D/g,'');
+   const number=digits?(digits.length===10||digits.length===11?'55'+digits:digits):'';
+   window.open('https://wa.me/'+number+'?text='+encodeURIComponent(message),'_blank','noopener');
+ }
+}
 </script></body></html>
